@@ -3,7 +3,7 @@ version: '3'
 services:
   frontend:
     build:
-      context: ./weather-tracker/frontend
+      context: ./weather-tracker/weather-tracker-frontend
       dockerfile: Dockerfile
     ports:
       - "5173:5173"
@@ -17,7 +17,7 @@ services:
       - VITE_FIREBASE_MEASUREMENT_ID=${VITE_FIREBASE_MEASUREMENT_ID}
       - VITE_API_URL=http://localhost:5001
     volumes:
-      - ./weather-tracker/frontend:/app
+      - ./weather-tracker/weather-tracker-frontend:/app
       - /app/node_modules
     depends_on:
       - backend
