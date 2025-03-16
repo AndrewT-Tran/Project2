@@ -3,7 +3,7 @@ version: '3'
 services:
   frontend:
     build:
-      context: ./weather-tracker/weather-tracker-frontend
+      context: ./weather-tracker/frontend
       dockerfile: Dockerfile
     ports:
       - "5173:5173"
@@ -17,7 +17,7 @@ services:
       - VITE_FIREBASE_MEASUREMENT_ID=${VITE_FIREBASE_MEASUREMENT_ID}
       - VITE_API_URL=http://localhost:5001
     volumes:
-      - ./weather-tracker/weather-tracker-frontend:/app
+      - ./weather-tracker/frontend:/app
       - /app/node_modules
     depends_on:
       - backend
@@ -47,7 +47,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./weather-tracker/weather-backend/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
@@ -62,7 +62,7 @@ services:
     ports:
       - "9093:9093"
     volumes:
-      - ./weather-tracker/weather-backend/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
       - alertmanager_data:/alertmanager
     command:
       - '--config.file=/etc/alertmanager/alertmanager.yml'
@@ -80,6 +80,7 @@ services:
       - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
     volumes:
       - grafana-storage:/var/lib/grafana
+      - ./grafana-dashboard.json:/etc/grafana/provisioning/dashboards/weather-dashboard.json
     depends_on:
       - prometheus
 

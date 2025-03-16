@@ -152,15 +152,16 @@ pipenv run python app.py
 
 ```
 weather-tracker/
-├── weather-tracker-frontend/    # React frontend
-│   ├── src/                    # Source code
-│   ├── Dockerfile             # Frontend container config
-│   └── package.json           # Dependencies
-├── weather-backend/           # Flask backend
-│   ├── app.py                # Main application
-│   ├── Dockerfile            # Backend container config
-│   └── Pipfile              # Python dependencies
-└── docker-compose.yml        # Container orchestration
+├── docker-compose.yml
+├── prometheus.yml
+├── alertmanager.yml
+├── grafana-dashboard.json
+└── weather-tracker/
+    ├── frontend/
+    │   └── Dockerfile
+    └── backend/
+        ├── Dockerfile
+        └── serviceAccountKey.json
 ```
 
 ## Contributing

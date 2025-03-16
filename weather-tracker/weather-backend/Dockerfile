@@ -1,27 +1,23 @@
-FROM python:3.12-slim
+FROM python:3.9-slim
 
 WORKDIR /app
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     curl \
-    gcc \
-    python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy Pipfile and Pipfile.lock
-COPY Pipfile* ./
+# Copy requirements first for better caching
+COPY requirements.txt .
 
-# Install pipenv and dependencies
-RUN pip install --no-cache-dir pipenv && \
-    pipenv install --deploy --system && \
-    pip uninstall -y pipenv virtualenv-clone virtualenv
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application
 COPY . .
 
-# Expose the port
+# Expose port
 EXPOSE 5001
 
-# Start the application
-CMD ["python", "app.py"] 
+# Run the application with gunicorn
+CMD ["gunicorn", "--bind", "0.0.0.0:5001", "app:app"] 
