@@ -32,7 +32,7 @@ The Weather Tracking Application is built as part of the Production Manager trai
 
 ### React Frontend
 
-![React frontend showing the weather tracking dashboard with Material UI components](../assets/postspark_export_2025-03-14_09-40-43.png)
+![React frontend showing the weather tracking dashboard with Material UI components](assets/login.png)
 
 - User authentication via Firebase
 - Real-time weather data display
@@ -42,7 +42,7 @@ The Weather Tracking Application is built as part of the Production Manager trai
 
 ### Flask Backend
 
-![Flask backend architecture diagram showing API endpoints and integrations](../assets/postspark_export_2025-03-14_09-42-28.png)
+![Flask backend architecture diagram showing API endpoints and integrations](assets/flaskbackend.png)
 
 - RESTful API endpoints for weather data
 - Firebase authentication integration
