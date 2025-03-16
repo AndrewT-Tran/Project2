@@ -1,0 +1,38 @@
+groups:
+  - name: weather_alerts
+    rules:
+      - alert: HighTemperature
+        expr: current_temperature_celsius > 30
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High temperature detected"
+          description: "Temperature is above 30°C"
+
+      - alert: ExtremeTemperature
+        expr: current_temperature_celsius > 35
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Extreme temperature detected"
+          description: "Temperature is above 35°C"
+
+      - alert: HighWindSpeed
+        expr: current_wind_speed_ms > 20
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High wind speed detected"
+          description: "Wind speed is above 20 m/s"
+
+      - alert: WeatherAPIErrors
+        expr: rate(weather_api_requests_total{status="error"}[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Weather API errors detected"
+          description: "High rate of errors in weather API requests" 

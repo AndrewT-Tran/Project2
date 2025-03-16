@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-base-100 text-base-content transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply bg-white/25 backdrop-blur-lg border border-white/20 rounded-lg;
+  }
+
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+  }
+
+  .form-container {
+    @apply max-w-md mx-auto p-4 sm:p-6 lg:p-8;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 mt-2 mb-4 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-neutral text-neutral-content transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary hover:bg-primary/90 text-primary-content;
+  }
+
+  .error-message {
+    @apply text-error text-sm mt-1 mb-4;
+  }
+
+  .card {
+    @apply p-4 sm:p-6 rounded-lg shadow-lg transition-all duration-300;
+  }
+
+  /* Custom checkbox styles */
+  .checkbox-sm {
+    @apply h-4 w-4;
+  }
+
+  .checkbox-sm+span {
+    @apply text-xs sm:text-sm;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes windSwing {
+  0% {
+    transform: translateX(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateX(5px) rotate(5deg);
+  }
+
+  100% {
+    transform: translateX(0px) rotate(0deg);
+  }
+}
+
+.wind-animation {
+  display: inline-block;
+  animation: windSwing 1.5s infinite ease-in-out;
+}
