@@ -32,7 +32,7 @@ The Weather Tracking Application is built as part of the Production Manager trai
 
 ### React Frontend
 
-![React frontend showing the weather tracking dashboard with Material UI components](../assets/postspark_export_2025-03-14_09-40-43.png)
+![alt text](../assets/postspark_export_2025-03-14_09-40-43.png)
 
 - User authentication via Firebase
 - Real-time weather data display
@@ -42,7 +42,7 @@ The Weather Tracking Application is built as part of the Production Manager trai
 
 ### Flask Backend
 
-![Flask backend architecture diagram showing API endpoints and integrations](../assets/postspark_export_2025-03-14_09-42-28.png)
+![alt text](../assets/postspark_export_2025-03-14_09-42-28.png)
 
 - RESTful API endpoints for weather data
 - Firebase authentication integration
@@ -75,10 +75,9 @@ The Weather Tracking Application is built as part of the Production Manager trai
 
 2. Configure environment variables:
 
-   Create a root `.env` file with the following:
+   Frontend (.env):
 
    ```
-   # Firebase Configuration
    VITE_FIREBASE_API_KEY=your_api_key
    VITE_FIREBASE_AUTH_DOMAIN=your_domain
    VITE_FIREBASE_PROJECT_ID=your_project_id
@@ -86,12 +85,12 @@ The Weather Tracking Application is built as part of the Production Manager trai
    VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
    VITE_FIREBASE_APP_ID=your_app_id
    VITE_FIREBASE_MEASUREMENT_ID=your_measurement_id
+   ```
 
-   # Weather API Configuration
+   Backend (.env):
+
+   ```
    WEATHER_API_KEY=your_openweather_api_key
-
-   # Other Configuration
-   CORS_ORIGIN=http://localhost:5173
    PORT=5001
    ```
 
@@ -112,7 +111,7 @@ The Weather Tracking Application is built as part of the Production Manager trai
    - Backend API: <http://localhost:5001>
    - Prometheus: <http://localhost:9090>
    - Alertmanager: <http://localhost:9093>
-   - Grafana: <http://localhost:4000>
+   - Grafana: <http://localhost:3000>
 
 ### Local Development
 
@@ -136,7 +135,7 @@ pipenv run python app.py
 
 ### Grafana
 
-1. Access Grafana at <http://localhost:4000>
+1. Access Grafana at <http://localhost:3000>
 2. Default credentials:
    - Username: admin
    - Password: admin
@@ -160,11 +159,8 @@ weather-tracker/
 ├── weather-backend/           # Flask backend
 │   ├── app.py                # Main application
 │   ├── Dockerfile            # Backend container config
-│   ├── prometheus.yml        # Prometheus configuration
-│   ├── alertmanager.yml      # Alertmanager configuration
 │   └── Pipfile              # Python dependencies
-├── docker-compose.yml        # Container orchestration
-└── .env                      # Environment variables
+└── docker-compose.yml        # Container orchestration
 ```
 
 ## Contributing
@@ -191,7 +187,6 @@ Common issues and solutions:
    - Check Docker logs: `docker-compose logs`
    - Verify environment variables are set
    - Ensure ports are not in use
-   - Try running with `--remove-orphans` flag if you see orphaned containers
 
 2. **Frontend not connecting to backend:**
    - Verify CORS configuration
@@ -202,7 +197,6 @@ Common issues and solutions:
    - Check Prometheus targets
    - Verify metrics endpoint accessibility
    - Review Grafana data source configuration
-   - If Grafana port 4000 is in use, you can modify it in docker-compose.yml
 
 ## License
 
